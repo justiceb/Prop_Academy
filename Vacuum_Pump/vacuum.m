@@ -1,4 +1,10 @@
 clc; clear; close all;
+%{
+Nomenclature
+   c = engine chamber
+   e = nozzle exit
+   v = vacuum chamber
+%}
 
 %% Given
 Te = 2165;                 %(K)

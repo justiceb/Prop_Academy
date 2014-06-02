@@ -1,4 +1,10 @@
 clc; clear; close all
+%{
+Nomenclature
+   prop = propellant
+   tube = stainless steel straight tube
+   valve = Parker PN 009-0172-900 Valve
+%}
 
 %% Given
 Thrust = 1;                %(N)
