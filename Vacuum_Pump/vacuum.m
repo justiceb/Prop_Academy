@@ -11,7 +11,7 @@ gamma = 1.21;              %
 mdot = 0.001 * 0.453592;   %(kg/s)
 Pc = 300 * 6894.75729;     %(Pa)
 Tc = 2165;                 %(K)
-Vdot_pump = 46*0.00027777; %(m^3/s)    
+Vdot_pump = 40*0.00027777; %(m^3/s)    
 R = 461.5;                 %(j/kg-K) - assume water vapor gas constant
 
 %% Constants
