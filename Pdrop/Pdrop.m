@@ -18,7 +18,7 @@ tube.eps =  0.002 * 0.001; %(m) tube roughness [1]  --> assume new stainless ste
 valve.ID = 0.030 * 0.0254; %(m) valve orrifice size
 
 %% Constants
-g = 9.087;   %(m/s/s)
+g = 9.807;   %(m/s/s)
 
 %% Calculations
 mdot = Thrust/(ISP*g);
