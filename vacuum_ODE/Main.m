@@ -26,14 +26,14 @@ xlabel('time (s)')
 ylabel('Mass Flow Rate (g/s)')
 grid on
 
-Tc_F = 1.8*(data.Tc-273)+32;
+Te_F = 1.8*(data.Te-273)+32;
 Tv_F = 1.8*(data.Tv-273)+32;
 subplot(3,2,3)
-plot(t,Tc_F,t,Tv_F)
+plot(t,Te_F,t,Tv_F)
 xlabel('time (s)')
 ylabel('Temperature (F)')
 grid on
-legend('Rocket Chamber','Vacuum Chamber')
+legend('Nozzle Exit','Vacuum Chamber')
 
 subplot(3,2,4)
 plot(t,data.Pv*0.000145037738)
@@ -42,7 +42,7 @@ ylabel('Vacuum Chamber Pressure (psi)')
 grid on
 
 subplot(3,2,5)
-plot(t,data.rho_v*0.001)
+plot(t,data.rho_v*1000)
 xlabel('time (s)')
 ylabel('Vacuum Chamber Density (gcm)')
 grid on
