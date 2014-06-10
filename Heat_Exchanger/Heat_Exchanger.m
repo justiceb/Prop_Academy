@@ -11,17 +11,17 @@ Twall = 293.15;                %(K) temperature of wall
 L = 2 * 0.3048;                %(m) length of wall
 
 %% Gas features
-k = 0.065;                    %(W/(K-m)) thermal diffusivity
+k = 0.065;                    %(W/(K-m)) thermal conductivity
 CP = 2.7508 * 1000;           %(J/KG-K) coefficient of pressure
 T = 810;                      %(K) initial gas temp
 rho = 0.0397;                 %(kg/m^3) initial density
 h = CP*T;                     %(J/kg) initial specific enthalpy
 
-i=0; t=0; dt = 0.0001; x = 0;
+i=0; t=0; dt = 0.00001; x = 0;
 while x < L
     %% find dx
     mdot = 0.00045;       %(kg/s) mass flow rate
-    Ahole = 0.00203;      %(m^2) oriffice area of heat exchanger
+    Ahole = 5.067E-4;      %(m^2) oriffice area of heat exchanger
     V = mdot/(rho*Ahole); %(m/s) gas velocity through heat exchanger
     dx = V*dt;             %(m) distance progressed through the heat exchanger
     
@@ -31,9 +31,12 @@ while x < L
     mu = 0.00003;               %(Pa*s) dynamic viscosity
     nu = mu/rho;                %(m^2/s) kinematic viscosity
 
-    Ra = (g*beta*L^3)/(nu*alpha) * abs(Twall-T);                 %(SI) Rayleigh number
-    Pr = nu/alpha;                                               %(SI) Prandtl number
-    hc = (k/L)*(0.68+0.67*Ra^(1/4)/(1+(0.492/Pr)^(9/16))^(4/9)); %(W/m^2-K) heat transfer coefficient
+    Ra = (g*beta*L^3)/(nu*alpha) * abs(Twall-T);                           %(SI) Rayleigh number
+    Pr = nu/alpha;                                                         %(SI) Prandtl number
+    hc = (k/L)*(0.68+0.67*Ra^(1/4)/(1+(0.492/Pr)^(9/16))^(4/9));           %(W/m^2-K) heat transfer coefficient - Churchill and Chu method
+    %hc = 0.548*(k/L)*(L^3*rho*g*beta*CP*mu*abs(Twall-T)/(mu^2*k))^0.25;    %(W/m^2-K) heat transfer coefficient - Lauer method      
+    
+
     
     %% Calc heat transfer
     qdotdot = (Twall-T)*hc;           %(W/m^2) heat flux
@@ -51,7 +54,7 @@ while x < L
     data.T(i) = T;
     data.t(i) = t;
     data.x(i) = x;
-    data.Ra(i) = Ra;
+    data.hc(i) = hc;
     
 end
 
@@ -63,11 +66,12 @@ plot(get(gca,'xlim'), Twall*ones(1,2)); %plot horizontal line
 xlabel('distance from leading edge (m)')
 ylabel('Gas Temp (K)')
 grid on
-legend('Gass Temp','Wall Temp')
+legend('Gas Temp','Wall Temp')
 
 figure(2)
-plot(data.x,data.Ra)
+plot(data.x,data.hc)
+hold all
 xlabel('distance from leading edge (m)')
-ylabel('Ra')
+ylabel('hc')
 grid on
 
