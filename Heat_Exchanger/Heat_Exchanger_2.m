@@ -1,10 +1,10 @@
 clc; clear; close all;
 
 %% Given
-SA_perplate = 10 * 0.092903;   %(m^2) heat transfer surface area per plate
-N = 20;                        %number of plates
-Aflux = SA_perplate*N;         %(m^2) flux area for heat transfer
-g = 9.807;                     %(m/s/s) gravitational constant
+SA_perplate = 24*4 * 0.00064516;   %(m^2) heat transfer surface area per plate
+N = 20;                            %number of plates
+Aflux = SA_perplate*N;             %(m^2) flux area for heat transfer
+g = 9.807;                         %(m/s/s) gravitational constant
 
 %% Wall features --> constant temperature
 Twall = 293.15;                %(K) temperature of wall
