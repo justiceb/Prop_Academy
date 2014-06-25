@@ -1,15 +1,15 @@
 function [mdot, data] = vacuum_ODE(t, m)
 
 %% Given
-gamma_e = 1.2797;                 %
-CP_e = 1.7509 * 1000;             %(J/kg-K)
-CV_e = CP_e/gamma_e;                %(J/kg-K)
-R_e = CP_e - CV_e;                %(j/kg-K) - assume water vapor gas constant
+gamma_e = 1.2525;                 %          -CEA
+CP_e = 1.8984 * 1000;             %(J/kg-K)  -CEA
+CV_e = CP_e/gamma_e;              %(J/kg-K)  -CEA
+R_e = CP_e - CV_e;                %(j/kg-K)  -CEA
 mdot_engine = 0.001 * 0.453592;   %(kg/s)
-Pe = 0.22655 * 100000;            %(Pa)
-Te = 872.39;                      %(K)
-rho_e = 6.785E-2;                 %(kg/m^3)
-Vdot_pump = -40*0.00027777;       %(m^3/s)    
+Pe = 0.23664 * 100000;            %(Pa)      -CEA
+Te = 943.03;                      %(K)       -CEA
+rho_e = 6.5575E-2;                %(kg/m^3)  -CEA
+Vdot_pump = -40*0.00027777;       %(m^3/s)   -assume constant over pressure range
 
 %% Calculations
 % Chamber Geometry
