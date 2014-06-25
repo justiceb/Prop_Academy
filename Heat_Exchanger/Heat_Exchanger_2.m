@@ -13,8 +13,8 @@ P = Aflux/L;                   %(m) effective perimeter of wall
 
 %% Gas features
 %constants
-k = 0.065;                    %(W/(K-m)) thermal conductivity
-CP = 2.7508 * 1000;           %(J/KG-K) coefficient of pressure
+k = 0.065;                    %(W/(K-m)) thermal conductivity - water vapor
+CP = 1.8984 * 1000;           %(J/KG-K) coefficient of pressure - CEA
 mdot = 0.00045;               %(kg/s) mass flow rate
 rho = 0.0397;                 %(kg/m^3) initial density --> assume incompressible for the moment
 
